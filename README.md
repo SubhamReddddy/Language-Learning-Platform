@@ -14,9 +14,6 @@ The **Language Learning Platform** is an interactive web application designed to
 | Category     | Technology Used |
 |-------------|----------------|
 | **Frontend** | React.js, Vite, Tailwind CSS |
-| **Backend**  | Node.js, Express.js |
-| **Database** | MongoDB |
-| **Authentication** | JWT (JSON Web Token) |
 | **Hosting**  | Vercel |
 
 ## 🚀 Installation Guide
