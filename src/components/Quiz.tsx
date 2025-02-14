@@ -16,6 +16,7 @@ const Quiz = () => {
   const [currentAns, setCurrentAns] = useState<string>("");
   const [result, setResult] = useState<Array<string>>([]);
 
+  console.log(result);
   function handler() {
     setResult((prev) => {
       const temp = [...prev];

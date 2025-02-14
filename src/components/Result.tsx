@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { ReduxStateType } from "../redux/store";
 import { useNavigate } from "react-router-dom";
+import LoadingScreen from "./LoadingScreen";
 
 const Result = () => {
   const { isLoading, data, result } = useSelector(
@@ -16,7 +17,9 @@ const Result = () => {
     });
     return score;
   };
-  return (
+  return isLoading ? (
+    <LoadingScreen />
+  ) : (
     <div className="min-h-screen bg-gradient-to-br from-green-400 to-blue-600 flex flex-col items-center justify-center">
       <div className="bg-white shadow-xl rounded-lg p-8 max-w-3xl w-full">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">

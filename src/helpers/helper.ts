@@ -26,7 +26,7 @@ export const translateFunction = async (to: cod): Promise<responseType[]> => {
     const translatedWords: Array<string> = response.data.text.split("|");
 
     const data: responseType[] = words.map((ele, idx) => {
-      const filteredArray = translatedWords.filter((elements, index) => {
+      const filteredArray = translatedWords.filter((_, index) => {
         return index != idx;
       });
       const options = getRandomItems(
