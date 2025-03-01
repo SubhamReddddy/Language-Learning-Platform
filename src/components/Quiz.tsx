@@ -14,9 +14,8 @@ const Quiz = () => {
   const dispatch = useDispatch();
   const [count, setCount] = useState<number>(0);
   const [currentAns, setCurrentAns] = useState<string>("");
-  const [result, setResult] = useState<Array<string>>([]);
+  const [_, setResult] = useState<Array<string>>([]);
 
-  console.log(result);
   function handler() {
     setResult((prev) => {
       const temp = [...prev];
@@ -24,6 +23,7 @@ const Quiz = () => {
       dispatch(setResultInRedux(temp));
       return temp;
     });
+    history.replaceState(null, "", "/");
     navigate("/result");
   }
 

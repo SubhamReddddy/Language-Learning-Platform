@@ -1,12 +1,34 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ReduxStateType } from "../redux/store";
 import { useNavigate } from "react-router-dom";
 import LoadingScreen from "./LoadingScreen";
+import axios, { AxiosResponse } from "axios";
+import { toast } from "react-toastify";
+import { setCarrierInRedux } from "../redux/carrierSlice";
 
 const Result = () => {
   const { isLoading, data, result } = useSelector(
     (state: ReduxStateType) => state.root
   );
+  const dispatch = useDispatch();
+  const submitHandler = async () => {
+    try {
+      const res = (await axios.post(
+        `${import.meta.env.VITE_BACKEND}/api/v1/task/addtask`,
+        { data, result },
+        {
+          withCredentials: true,
+        }
+      )) as AxiosResponse<Root>;
+
+      dispatch(setCarrierInRedux(res.data.tasks.carrier));
+      toast.success("assingment uploded!");
+      // history.replaceState(null, "", "/");
+      navigate("/");
+    } catch (error) {
+      toast.error("somthing went worng!");
+    }
+  };
   const navigate = useNavigate();
   const calculateScore = () => {
     let score = 0;
@@ -64,10 +86,12 @@ const Result = () => {
         </div>
         <div className="mt-8 text-center">
           <button
-            onClick={() => navigate("/")}
+            onClick={() => {
+              submitHandler();
+            }}
             className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition duration-200"
           >
-            Home
+            Save Your Activity
           </button>
         </div>
       </div>

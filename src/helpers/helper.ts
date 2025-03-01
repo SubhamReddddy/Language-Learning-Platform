@@ -41,7 +41,6 @@ export const translateFunction = async (to: cod): Promise<responseType[]> => {
     });
     return data;
   } catch (error) {
-    console.error(error);
     throw new Error("some error");
   }
 };
@@ -79,7 +78,6 @@ export const audioFatch = async (
     const response = await axios.request(options);
     return response.data;
   } catch (error) {
-    console.error(error);
     throw new Error("some error!");
   }
 };

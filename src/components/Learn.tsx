@@ -24,7 +24,6 @@ const Learn = () => {
     const response: Promise<responseType[]> = translateFunction(code as cod);
     response
       .then((data) => {
-        console.log(data);
         dispatch(setData(data));
       })
       .catch((e) => {
@@ -66,11 +65,13 @@ const Learn = () => {
       </button>
 
       {/* Word and Audio Icon */}
-      <div className="bg-white text-gray-800 rounded-lg shadow-lg px-6 sm:px-8 py-4 sm:py-6 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6 sm:mb-8 w-full max-w-lg">
-        <span className="text-2xl sm:text-3xl font-bold">{count + 1} -</span>
+      <div className="bg-white text-gray-800 rounded-lg shadow-lg px-6 sm:px-8 py-4 sm:py-6 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6 sm:mb-8 w-full max-w-lg">
+        <span className="text-2xl sm:text-3xl font-bold">{count + 1}</span>
+        <span>-</span>
         <span className="text-2xl sm:text-3xl font-bold">
-          {data[count]?.word} :
+          {data[count]?.word}
         </span>
+        <span>:</span>
         <span className="text-2xl sm:text-3xl font-bold">
           {data[count]?.meaning}
         </span>
