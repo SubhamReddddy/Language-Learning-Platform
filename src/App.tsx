@@ -14,8 +14,8 @@ const Learn = lazy(() => import("./components/Learn"));
 const Quiz = lazy(() => import("./components/Quiz"));
 const Result = lazy(() => import("./components/Result"));
 const Login = lazy(() => import("./pages/Login"));
-const Register = lazy(() => import("./pages/Carrier"));
-const Carrier = lazy(() => import("./pages/Register"));
+const Register = lazy(() => import("./pages/Register"));
+const Carrier = lazy(() => import("./pages/Carrier"));
 const TaskReview = lazy(() => import("./pages/TaskReview"));
 
 const App = () => {
