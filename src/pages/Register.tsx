@@ -5,9 +5,11 @@ import { adduser } from "../redux/userSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { ReduxStateType } from "../redux/store";
+import LoadingScreen from "../components/LoadingScreen";
 
 export default function Register() {
   const [user, setUser] = useState<register | null>();
+  const [loading, setloading] = useState<boolean>(false);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -24,6 +26,7 @@ export default function Register() {
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
+      setloading(true);
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND}/api/v1/user/register`,
         user,
@@ -37,9 +40,13 @@ export default function Register() {
     } catch (error) {
       const err = error as AxiosError<{ message: string }>;
       toast.error(err.response?.data?.message);
+    } finally {
+      setloading(false);
     }
   };
-  return (
+  return loading ? (
+    <LoadingScreen />
+  ) : (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-green-400 to-blue-500">
       <div className="bg-white/10 backdrop-blur-lg p-8 rounded-xl shadow-lg w-96 mt-10">
         <h2 className="text-3xl font-bold text-white text-center mb-6">

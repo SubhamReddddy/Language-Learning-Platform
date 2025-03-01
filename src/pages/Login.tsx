@@ -5,12 +5,14 @@ import { adduser } from "../redux/userSlice";
 import { toast } from "react-toastify";
 import { ReduxStateType } from "../redux/store";
 import { useNavigate } from "react-router-dom";
+import LoadingScreen from "../components/LoadingScreen";
 
 export default function Login() {
   const [user, setUser] = useState<{ email: string; password: string } | null>({
     email: "",
     password: "",
   });
+  const [loading, setloading] = useState<boolean>(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user: stateuser } = useSelector(
@@ -30,6 +32,7 @@ export default function Login() {
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      setloading(true);
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND}/api/v1/user/login`,
         user,
@@ -41,10 +44,14 @@ export default function Login() {
     } catch (error) {
       const err = error as AxiosError<{ message: string }>;
       toast.error(err.response?.data?.message || "Login failed");
+    } finally {
+      setloading(false);
     }
   };
 
-  return (
+  return loading ? (
+    <LoadingScreen />
+  ) : (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
       <div className="bg-white/10 backdrop-blur-lg p-8 rounded-xl shadow-lg w-96">
         <h2 className="text-3xl font-bold text-white text-center mb-6">

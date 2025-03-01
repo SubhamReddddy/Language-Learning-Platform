@@ -7,16 +7,16 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { useDispatch } from "react-redux";
 import { adduser } from "./redux/userSlice";
 import Auth from "./components/Auth";
-import Carrier from "./pages/Carrier";
 import { setCarrierInRedux } from "./redux/carrierSlice";
-import TaskReview from "./pages/TaskReview";
 //components
 const Home = lazy(() => import("./components/Home"));
 const Learn = lazy(() => import("./components/Learn"));
 const Quiz = lazy(() => import("./components/Quiz"));
 const Result = lazy(() => import("./components/Result"));
 const Login = lazy(() => import("./pages/Login"));
-const Register = lazy(() => import("./pages/Register"));
+const Register = lazy(() => import("./pages/Carrier"));
+const Carrier = lazy(() => import("./pages/Register"));
+const TaskReview = lazy(() => import("./pages/TaskReview"));
 
 const App = () => {
   const dispatch = useDispatch();
