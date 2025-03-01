@@ -23,7 +23,7 @@ const Result = () => {
 
       dispatch(setCarrierInRedux(res.data.tasks.carrier));
       toast.success("assingment uploded!");
-      // history.replaceState(null, "", "/");
+      history.replaceState(null, "", "/");
       navigate("/");
     } catch (error) {
       toast.error("somthing went worng!");
