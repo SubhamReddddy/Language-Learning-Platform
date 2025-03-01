@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { adduser } from "../redux/userSlice";
 import { toast } from "react-toastify";
 import { ReduxStateType } from "../redux/store";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoadingScreen from "../components/LoadingScreen";
 
 export default function Login() {
@@ -89,9 +89,9 @@ export default function Login() {
         </form>
         <p className="text-center text-white/80 mt-4">
           Don't have an account?{" "}
-          <a href="/register" className="text-white font-bold">
+          <Link to="/register" className="text-white font-bold">
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </div>

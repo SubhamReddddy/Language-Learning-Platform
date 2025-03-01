@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { adduser } from "../redux/userSlice";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ReduxStateType } from "../redux/store";
 import LoadingScreen from "../components/LoadingScreen";
 
@@ -102,9 +102,9 @@ export default function Register() {
         </form>
         <p className="text-center text-white/80 mt-4">
           Already have an account?{" "}
-          <a href="/login" className="text-white font-bold">
+          <Link to="/login" className="text-white font-bold">
             Sign In
-          </a>
+          </Link>
         </p>
       </div>
     </div>
